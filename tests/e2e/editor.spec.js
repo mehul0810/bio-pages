@@ -35,11 +35,13 @@ test("public profile renders configured identity and no broken image assets", as
       name: new RegExp(sample.links[0].items[0].title),
     }),
   ).toHaveAttribute("href", sample.links[0].items[0].url);
-  expect(
-    await page
-      .locator(".avatar img")
-      .evaluate((img) => img.complete && img.naturalWidth > 0),
-  ).toBe(true);
+  await expect
+    .poll(() =>
+      page
+        .locator(".avatar img")
+        .evaluate((img) => img.complete && img.naturalWidth > 0),
+    )
+    .toBe(true);
   expect(errors).toEqual([]);
   await expect(page).toHaveTitle(`${sample.name} · BioPage`);
 });
@@ -95,11 +97,13 @@ test("all 12 design variations preserve content and mobile preview", async ({
     }
   }
   await page.getByRole("button", { name: "Mobile", exact: true }).click();
-  expect(
-    await page
-      .locator(".preview-canvas")
-      .evaluate((el) => el.getBoundingClientRect().width),
-  ).toBeLessThanOrEqual(390);
+  await expect
+    .poll(() =>
+      page
+        .locator(".preview-canvas")
+        .evaluate((el) => el.getBoundingClientRect().width),
+    )
+    .toBeLessThanOrEqual(390);
 });
 
 test("JSON export includes content and design without publishing", async ({
