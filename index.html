@@ -1,47 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="page-title">Instant Bio</title>
-    <meta name="description" id="page-description" content="Your instant bio page powered by profile.json" />
-    <meta property="og:title" id="og-title" content="Instant Bio" />
-    <meta property="og:description" id="og-description" content="Your instant bio page powered by profile.json" />
+    <meta name="theme-color" content="#f6f3eb" />
+    <title>BioPage</title>
+    <meta
+      name="description"
+      content="A little home for everything you create."
+    />
+    <meta property="og:title" content="BioPage" />
+    <meta
+      property="og:description"
+      content="A little home for everything you create."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:image" id="og-image" content="" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" id="twitter-title" content="Instant Bio" />
-    <meta name="twitter:description" id="twitter-description" content="Your instant bio page powered by profile.json" />
-    <meta name="twitter:image" id="twitter-image" content="" />
-    <meta name="keywords" id="page-keywords" content="bio, profile, personal page" />
-    <script>
-      // Dynamically update meta tags once profile is loaded
-      fetch('profile.json')
-        .then(response => response.json())
-        .then(data => {
-          // Update page title and meta tags
-          const name = data.name || 'Instant Bio';
-          const description = data.short_description || 'Personal bio page';
-          const image = data.photo_url || '';
-          const keywords = data.keywords || 'bio, profile, personal page';
-          
-          document.title = name;
-          document.getElementById('page-title').textContent = name;
-          document.getElementById('page-description').setAttribute('content', description);
-          document.getElementById('og-title').setAttribute('content', name);
-          document.getElementById('og-description').setAttribute('content', description);
-          document.getElementById('og-image').setAttribute('content', image);
-          document.getElementById('twitter-title').setAttribute('content', name);
-          document.getElementById('twitter-description').setAttribute('content', description);
-          document.getElementById('twitter-image').setAttribute('content', image);
-          document.getElementById('page-keywords').setAttribute('content', keywords);
-        })
-        .catch(err => console.error('Failed to load profile:', err));
-    </script>
+    <meta name="twitter:card" content="summary" />
+    <!-- PROFILE_META -->
   </head>
   <body>
     <div id="root"></div>
+    <noscript
+      >This Bio Page needs JavaScript to display its interactive profile. The
+      public profile is also available in
+      <a href="./profile.json">profile.json</a>.</noscript
+    >
     <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>

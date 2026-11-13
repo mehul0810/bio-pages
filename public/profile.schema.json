@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BioPage profile v2",
+  "description": "Version 2 profile. Name is required and must contain non-whitespace text. Other content fields are optional. Unknown extension fields are permitted but ignored and omitted by normalization. Runtime validation additionally enforces URL safety, valid calendar dates and the 256 KB total UTF-8 limit.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "handle": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "headline": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "email": {
+      "type": "string",
+      "maxLength": 500,
+      "pattern": "^(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[^?#<>\\s@]+@[^?#<>\\s@]+\\.[^?#<>\\s@]+)$"
+    },
+    "keywords": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "version": {
+      "const": "2.0.0"
+    },
+    "short_description": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 20000
+    },
+    "photo_url": {
+      "type": "string",
+      "maxLength": 2048,
+      "description": "Empty, HTTP(S), or safe relative image path. Runtime rejects unsafe schemes, protocol-relative URLs, backslashes and control characters.",
+      "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))(?:[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?|(?!//|[a-zA-Z][a-zA-Z0-9+.-]*:|[?#])[^\\s\\\\]+))\\s*$"
+    },
+    "cover_url": {
+      "type": "string",
+      "maxLength": 2048,
+      "description": "Empty, HTTP(S), or safe relative image path. Runtime rejects unsafe schemes, protocol-relative URLs, backslashes and control characters.",
+      "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))(?:[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?|(?!//|[a-zA-Z][a-zA-Z0-9+.-]*:|[?#])[^\\s\\\\]+))\\s*$"
+    },
+    "contact": {
+      "type": "string",
+      "maxLength": 2048,
+      "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))(?:[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?|[mM][aA][iI][lL][tT][oO]:[^?#<>\\s@]+@[^?#<>\\s@]+\\.[^?#<>\\s@]+))\\s*$"
+    },
+    "appearance": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "enum": ["studio", "editorial", "spotlight"]
+        },
+        "palette": {
+          "enum": ["honey", "sage", "rose", "ink"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "support": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "button_label": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "url": {
+          "type": "string",
+          "maxLength": 2048,
+          "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?)\\s*$",
+          "description": "Empty or HTTP(S); runtime also rejects invalid hosts, credentials and encoded controls."
+        }
+      },
+      "additionalProperties": true
+    },
+    "social": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?)\\s*$",
+            "description": "Empty or HTTP(S); runtime also rejects invalid hosts, credentials and encoded controls."
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "links": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "items": {
+            "type": "array",
+            "maxItems": 30,
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "maxLength": 500
+                },
+                "description": {
+                  "type": "string",
+                  "maxLength": 2000
+                },
+                "url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?)\\s*$",
+                  "description": "Empty or HTTP(S); runtime also rejects invalid hosts, credentials and encoded controls."
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "updates": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "date": {
+            "type": "string",
+            "maxLength": 10,
+            "pattern": "^(?:$|\\d{4}-\\d{2}-\\d{2})$",
+            "description": "Empty or real YYYY-MM-DD calendar date (runtime validated).",
+            "anyOf": [
+              {
+                "const": ""
+              },
+              {
+                "format": "date"
+              }
+            ]
+          },
+          "excerpt": {
+            "type": "string",
+            "maxLength": 2000
+          },
+          "url": {
+            "type": "string",
+            "maxLength": 2048,
+            "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?)\\s*$",
+            "description": "Empty or HTTP(S); runtime also rejects invalid hosts, credentials and encoded controls."
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true,
+  "required": ["version", "name"]
+}

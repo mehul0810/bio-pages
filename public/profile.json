@@ -1,34 +1,75 @@
 {
-  "version": "1.0.0",
-  "name": "Mehul Gohil",
-  "email": "mehul@example.com",
-  "contact": "https://mehul.dev/contact",
-  "headline": "WordPress Expert & SaaS Developer",
-  "short_description": "Helping businesses scale with blazing-fast WordPress solutions.",
-  "keywords": "WordPress developer, SaaS builder, freelance expert, plugin developer",
-  "photo_url": "https://your-username.github.io/your-repo-name/assets/photo.jpg",
-  "description": "<strong>Mehul</strong> is a <em>Certified WordPress Expert</em> helping teams build performant, secure, and scalable digital products.",
-  "ui": "wds",
-  "hovercard": true,
+  "version": "2.0.0",
+  "name": "Maya Chen",
+  "handle": "@mayamakes",
+  "headline": "Making little things for a more colorful world.",
+  "location": "Portland, Oregon",
+  "short_description": "Illustrator, slow-living enthusiast, and collector of little everyday wonders.",
+  "description": "BioPage demo · This is a fictional creator profile.\n\nHi, I’m Maya. I turn small observations into colorful illustrations, thoughtful objects, and stories worth slowing down for.\n\nThis is my little corner of the internet. Explore what I’m making, read my latest notes, or help keep the creative experiments going.",
+  "photo_url": "images/maya.svg",
+  "cover_url": "images/cover.svg",
+  "email": "hello@example.com",
+  "contact": "https://example.com/contact",
+  "keywords": "illustration, creativity, independent creator, slow living",
+  "appearance": {
+    "template": "studio",
+    "palette": "honey"
+  },
+  "support": {
+    "enabled": true,
+    "title": "A little support goes a long way.",
+    "description": "If my work brings a little color to your day, you can help make the next illustration, story, or happy accident possible.",
+    "button_label": "Buy me a coffee",
+    "url": ""
+  },
   "social": [
-    { "platform": "twitter", "url": "https://twitter.com/mehul_gohil0810" },
-    { "platform": "linkedin", "url": "https://linkedin.com/in/mehulgohilindia" },
-    { "platform": "github", "url": "https://github.com/mehul0810" }
+    {
+      "platform": "instagram",
+      "url": "https://example.com/instagram"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://example.com/youtube"
+    },
+    {
+      "platform": "pinterest",
+      "url": "https://example.com/pinterest"
+    }
   ],
   "links": [
     {
-        "category": "Social",
-        "items": [
-            { "title": "Twitter", "url": "https://twitter.com/mehul_gohil0810" },
-            { "title": "LinkedIn", "url": "https://linkedin.com/in/mehulgohilindia" }
-        ]
+      "category": "Explore my world",
+      "items": [
+        {
+          "title": "The illustration shop",
+          "description": "Little prints. Big feelings. Made to brighten your walls.",
+          "url": "https://example.com/shop"
+        },
+        {
+          "title": "Letters from the studio",
+          "description": "A monthly note on making things and finding your rhythm.",
+          "url": "https://example.com/newsletter"
+        },
+        {
+          "title": "Let’s make something together",
+          "description": "Thoughtful collaborations and illustration commissions.",
+          "url": "https://example.com/collaborate"
+        }
+      ]
+    }
+  ],
+  "updates": [
+    {
+      "title": "Finding inspiration in the in-between",
+      "date": "2026-10-18",
+      "excerpt": "A few sketches, an afternoon walk, and a reminder to pay attention to the small things.",
+      "url": "https://example.com/journal/in-between"
     },
     {
-        "category": "Projects",
-        "items": [
-            { "title": "Website", "url": "https://mehulgohil.com/" },
-            { "title": "PerformWP", "url": "https://performwp.com/" }
-        ]
+      "title": "A new collection, slowly made",
+      "date": "2026-10-02",
+      "excerpt": "Meet the prints inspired by weekend markets and favorite corners of home.",
+      "url": "https://example.com/journal/new-collection"
     }
   ]
 }

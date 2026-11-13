@@ -4,8 +4,7 @@ node_modules/
 # Build output
 dist/
 
-# Lock files
-package-lock.json
+# Alternative package manager
 yarn.lock
 
 # Environment variables
@@ -21,3 +20,9 @@ yarn.lock
 # OS files
 .DS_Store
 Thumbs.db
+# Browser test output
+playwright-report/
+test-results/
+
+# Local deployment plans and receipts, never public source
+.bio-pages/
