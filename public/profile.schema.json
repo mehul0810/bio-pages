@@ -63,7 +63,18 @@
       "type": "object",
       "properties": {
         "template": {
-          "enum": ["studio", "editorial", "spotlight"]
+          "enum": [
+            "studio",
+            "editorial",
+            "spotlight",
+            "orbit",
+            "canvas",
+            "gallery",
+            "journal",
+            "postcard",
+            "launchpad",
+            "directory"
+          ]
         },
         "palette": {
           "enum": ["honey", "sage", "rose", "ink"]
@@ -147,6 +158,17 @@
                   "maxLength": 2048,
                   "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?)\\s*$",
                   "description": "Empty or HTTP(S); runtime also rejects invalid hosts, credentials and encoded controls."
+                },
+                "image_url": {
+                  "type": "string",
+                  "maxLength": 2048,
+                  "description": "Empty, HTTP(S), or safe relative image path. Runtime rejects unsafe schemes, protocol-relative URLs, backslashes and control characters.",
+                  "pattern": "^\\s*(?:$|(?!.*%(?:0[0-9a-fA-F]|1[0-9a-fA-F]|7[fF]))(?:[hH][tT][tT][pP][sS]?://[^/\\s\\\\@?#]+(?:[/?#][^\\s\\\\]*)?|(?!//|[a-zA-Z][a-zA-Z0-9+.-]*:|[?#])[^\\s\\\\]+))\\s*$"
+                },
+                "image_alt": {
+                  "type": "string",
+                  "maxLength": 500,
+                  "description": "Meaningful image description; empty for decorative artwork."
                 }
               },
               "additionalProperties": true

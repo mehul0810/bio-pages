@@ -16,6 +16,41 @@ export const TEMPLATES = Object.freeze([
     name: "Spotlight",
     description: "A bold stage for your next big thing.",
   },
+  {
+    id: "orbit",
+    name: "Orbit",
+    description: "Centered identity and focused destinations.",
+  },
+  {
+    id: "canvas",
+    name: "Canvas",
+    description: "A modular bento for projects and links.",
+  },
+  {
+    id: "gallery",
+    name: "Gallery",
+    description: "A visual portfolio with generous project cards.",
+  },
+  {
+    id: "journal",
+    name: "Journal",
+    description: "An introduction beside your latest notes.",
+  },
+  {
+    id: "postcard",
+    name: "Postcard",
+    description: "A warm personal card with a featured destination.",
+  },
+  {
+    id: "launchpad",
+    name: "Launchpad",
+    description: "One main action with room for what is next.",
+  },
+  {
+    id: "directory",
+    name: "Directory",
+    description: "A bold masthead and categorized destinations.",
+  },
 ]);
 export const PALETTES = Object.freeze([
   { id: "honey", name: "Honey", color: "#f4d372" },
@@ -147,6 +182,12 @@ export function normalizeProfile(input = {}) {
             title: string(l.title),
             description: string(l.description),
             url: safeUrl(l.url),
+            ...(l.image_url !== undefined
+              ? { image_url: safeUrl(l.image_url, { image: true }) }
+              : {}),
+            ...(l.image_alt !== undefined
+              ? { image_alt: string(l.image_alt) }
+              : {}),
           })),
       })),
     updates: arr(p.updates)
@@ -270,6 +311,8 @@ export function validateProfile(input) {
       str(l, "title", prefix, 500);
       str(l, "description", prefix);
       url(l, "url", prefix);
+      url(l, "image_url", prefix, { image: true });
+      str(l, "image_alt", prefix, 500);
     });
   });
   list(input, "updates", "", 12, (u, path) => {

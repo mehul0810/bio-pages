@@ -1,3 +1,4 @@
+import { TEMPLATES } from "../../src/profile.js";
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import { readFile } from "node:fs/promises";
@@ -75,12 +76,12 @@ test("draft edits survive reload but never replace the public profile; back and 
   ).toBeVisible();
 });
 
-test("all 12 design variations preserve content and mobile preview", async ({
+test("all 40 design variations preserve content and mobile preview", async ({
   page,
 }) => {
   await openEditor(page);
   await page.getByRole("button", { name: "Design", exact: true }).click();
-  for (const template of ["Studio", "Editorial", "Spotlight"]) {
+  for (const template of TEMPLATES.map((t) => t.name)) {
     await page
       .getByRole("button", { name: new RegExp(`^${template}`) })
       .click();
@@ -274,7 +275,7 @@ test("mobile profile and editor have no horizontal overflow", async ({
   ).toBeLessThanOrEqual(375);
   await page.getByRole("button", { name: "Make this yours" }).click();
   await page.getByRole("button", { name: "Design", exact: true }).click();
-  for (const template of ["Studio", "Editorial", "Spotlight"]) {
+  for (const template of TEMPLATES.map((t) => t.name)) {
     await page
       .getByRole("button", { name: new RegExp(`^${template}`) })
       .click();

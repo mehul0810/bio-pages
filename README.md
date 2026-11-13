@@ -20,13 +20,22 @@ Tell the same connected assistant:
 
 The assistant should resolve that existing Space, read its source, make the requested changes, test, and verify the new live version at the same URL. No export/upload workflow is intended.
 
-## Three templates, twelve looks
+## Ten templates, forty looks
 
 - **Studio:** a warm creator home.
 - **Editorial:** a journal-like layout for stories and ideas.
 - **Spotlight:** a bold introduction and focused links.
+- **Orbit:** centered identity and a focused link stack.
+- **Canvas:** a visual bento of projects and destinations.
+- **Gallery:** generous portfolio cards with image captions.
+- **Journal:** an introduction beside a reading timeline.
+- **Postcard:** a warm split card with a featured destination.
+- **Launchpad:** one primary action and secondary links.
+- **Directory:** a dark masthead and categorized destinations.
 
-Each supports Honey, Sage, Rose, and Ink palettes. Content, social profiles, links, updates, external support buttons, and appearance live in `public/profile.json`. Layout changes do not require rewriting your content.
+Each supports Honey, Sage, Rose, and Ink palettes. Content, social profiles, links, updates, external support buttons, and appearance live in `public/profile.json`. Layout changes do not require rewriting your content. The seven added layouts adapt the original Pen directions to real, variable-length content; they are not pixel-identical screenshots. Postcard, Launchpad, and Directory feature the first link in the first nonempty group. Journal preserves the supplied update order. No links are hidden when you change layouts.
+
+Visual layouts accept optional `image_url` and `image_alt` on each link. Gallery shows every project image; Canvas shows each group’s first image; Postcard and Launchpad use the first link’s image or the profile cover. Blank or broken images use decorative abstract artwork, not invented project screenshots. Add meaningful alt text where the image conveys information. No newsletter, subscription, or fake form is introduced.
 
 ## Optional visual editor
 

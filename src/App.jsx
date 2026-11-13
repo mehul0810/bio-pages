@@ -10,6 +10,7 @@ import {
 import "@fontsource-variable/dm-sans";
 import "@fontsource-variable/manrope";
 import "./styles.css";
+import { DesignedProfile } from "./layouts.jsx";
 import { createLaunchPrompt } from "./ai-workflow.js";
 import { editorTarget, draftWarning } from "./editor-context.js";
 
@@ -134,6 +135,12 @@ function SupportCard({ support }) {
 
 function ProfileView({ profile, preview = false }) {
   const { appearance } = profile;
+  if (!["studio", "editorial", "spotlight"].includes(appearance.template))
+    return (
+      <DesignedProfile
+        {...{ profile, preview, Avatar, SmartLink, SupportCard, Icon }}
+      />
+    );
   const cover = safeUrl(profile.cover_url, { image: true });
   return (
     <article
@@ -613,6 +620,22 @@ function Editor({
                                 updateLink(section, i, { url: v })
                               }
                             />
+                            <Field
+                              label="Project image URL (optional)"
+                              value={link.image_url || ""}
+                              onChange={(v) =>
+                                updateLink(section, i, { image_url: v })
+                              }
+                              help="Used by visual layouts. Leave blank for abstract artwork."
+                            />
+                            <Field
+                              label="Project image description"
+                              value={link.image_alt || ""}
+                              onChange={(v) =>
+                                updateLink(section, i, { image_alt: v })
+                              }
+                              help="Describe meaningful image content, or leave blank for decoration."
+                            />
                             <div className="row-actions">
                               <button
                                 className="text-button"
@@ -901,8 +924,9 @@ function Editor({
                 <div className="tip-card">
                   <span>✦</span>
                   <p>
-                    All 12 combinations use your same profile. Try a new look
-                    whenever inspiration strikes.
+                    All {TEMPLATES.length * PALETTES.length} combinations use
+                    your same profile. Try a new look whenever inspiration
+                    strikes.
                   </p>
                 </div>
               </div>

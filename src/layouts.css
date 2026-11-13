@@ -1,0 +1,623 @@
+/* Original Pen directions adapted to real, optional profile content. */
+.designed-page {
+  --layout-muted: var(--ink);
+  overflow-wrap: anywhere;
+  padding: 48px;
+}
+.designed-page :where(h1, h2, h3, p) {
+  margin: 0;
+}
+.designed-page h1 {
+  font:
+    800 clamp(1.6rem, 4cqi, 2.4rem)/1.15 "Manrope Variable",
+    sans-serif;
+  letter-spacing: -0.04em;
+}
+.designed-page h2 {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+.designed-page h3 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+.designed-page :where(a, button):focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 5px;
+  box-shadow: 0 0 0 5px #fff;
+}
+.layout-person {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  min-width: 0;
+}
+.designed-page .avatar {
+  position: static;
+  width: 82px;
+  height: 82px;
+  min-width: 82px;
+  margin: 0;
+  border-width: 3px;
+}
+.designed-page .avatar span {
+  font-size: 28px;
+}
+.layout-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 10px !important;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.layout-intro {
+  min-width: 0;
+}
+.layout-headline {
+  font:
+    700 clamp(1.6rem, 4cqi, 2.6rem)/1.22 "Manrope Variable",
+    sans-serif;
+  letter-spacing: -0.04em;
+  margin-top: 26px !important;
+}
+.layout-about {
+  color: inherit;
+  white-space: pre-line;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-top: 18px !important;
+  max-width: 68ch;
+}
+.layout-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+.layout-socials a,
+.layout-socials > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  min-width: 44px;
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  background: var(--bg);
+  color: var(--ink);
+}
+.layout-content,
+.layout-journal-main {
+  min-width: 0;
+}
+.layout-groups,
+.layout-updates,
+.layout-extras {
+  margin-top: 38px;
+}
+.layout-group + .layout-group {
+  margin-top: 32px;
+}
+.layout-links {
+  display: grid;
+  gap: 14px;
+}
+.layout-link {
+  display: block;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg);
+  text-decoration: none;
+}
+.layout-link-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  padding: 22px;
+  min-height: 72px;
+}
+.layout-link-content > span {
+  min-width: 0;
+}
+.layout-link strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.layout-link-description {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.layout-primary {
+  background: var(--deep);
+  color: #fff;
+  border-color: var(--deep);
+}
+.layout-primary .layout-link-description {
+  color: inherit;
+}
+.layout-note {
+  padding: 24px 0;
+  border-top: 1px solid var(--line);
+}
+.layout-note time {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+}
+.layout-note h3 a,
+.layout-note h3 > span {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 14px;
+}
+.layout-note p {
+  margin-top: 8px;
+  line-height: 1.7;
+}
+.layout-extras {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 22px;
+}
+.layout-contact {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--soft);
+}
+.layout-contact p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.layout-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 44px;
+  margin-top: 16px;
+  font-weight: 700;
+}
+.designed-page .support-card {
+  margin: 0;
+}
+.layout-media {
+  min-width: 0;
+  height: 240px;
+  position: relative;
+  background: var(--soft);
+  border-radius: 14px 14px 0 0;
+  overflow: hidden;
+}
+.layout-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.layout-art {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: var(--accent);
+}
+.layout-art i {
+  display: block;
+  position: absolute;
+  width: 48%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--deep);
+  left: 12%;
+  top: 20%;
+}
+.layout-art i:nth-child(2) {
+  background: var(--bg);
+  width: 38%;
+  top: -12%;
+  left: 53%;
+  border-radius: 22%;
+  transform: rotate(24deg);
+}
+.layout-art i:nth-child(3) {
+  background: var(--bg);
+  width: 38%;
+  top: 60%;
+  left: 56%;
+  border-radius: 8%;
+  transform: rotate(-30deg);
+}
+/* Orbit: centered identity and a focused stack, with a restrained ambient field. */
+.template-orbit.designed-page {
+  background:
+    radial-gradient(ellipse at 0 0, var(--accent), transparent 40%), var(--bg);
+}
+.template-orbit .layout-intro,
+.template-orbit .layout-content {
+  max-width: 560px;
+  margin-inline: auto;
+}
+.template-orbit .layout-intro {
+  text-align: center;
+}
+.template-orbit .layout-person {
+  flex-direction: column;
+}
+.template-orbit :where(.layout-details, .layout-socials) {
+  justify-content: center;
+}
+.template-orbit .layout-headline {
+  font-size: 1.45rem;
+}
+.template-orbit .layout-group h2 {
+  text-align: center;
+}
+/* Canvas: a bento hierarchy. First destination is visual and spans two columns. */
+.template-canvas .layout-links {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.template-canvas .layout-link:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.template-canvas .layout-link:not(:first-child) {
+  grid-column: span 2;
+  background: var(--soft);
+}
+.template-canvas .layout-media {
+  height: 220px;
+}
+.template-canvas .layout-headline {
+  font-size: 1.5rem;
+}
+/* Gallery: generous visual cards, with real captions outside the artwork. */
+.template-gallery .layout-headline {
+  max-width: 20ch;
+  font-size: clamp(2rem, 5cqi, 3.5rem);
+}
+.template-gallery .layout-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.template-gallery .layout-link:nth-child(even) .layout-art {
+  transform: scaleX(-1);
+}
+.template-gallery .layout-media {
+  height: 290px;
+}
+/* Journal: identity alongside a reading timeline. Source order stays logical. */
+.layout-journal {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 50px;
+}
+.template-journal .layout-person {
+  align-items: flex-start;
+  flex-direction: column;
+}
+.template-journal .layout-updates {
+  margin-top: 0;
+}
+.template-journal .layout-notes {
+  border-left: 2px solid var(--line);
+  padding-left: 22px;
+}
+.template-journal .layout-note {
+  position: relative;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  background: var(--soft);
+}
+.template-journal .layout-note::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--deep);
+  left: -29px;
+  top: 30px;
+}
+/* Postcard: a split personal card with image and warm introduction. */
+.template-postcard.designed-page {
+  background: var(--soft);
+}
+.layout-hero {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  align-items: center;
+}
+.template-postcard .layout-hero {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 24px;
+}
+.layout-hero > .layout-media {
+  height: 100%;
+  min-height: 380px;
+  border-radius: 14px;
+}
+.layout-hero .layout-person {
+  align-items: flex-start;
+  flex-direction: column;
+}
+.layout-hero .layout-primary {
+  margin-top: 24px;
+}
+.template-postcard .layout-links {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.template-postcard .layout-headline {
+  font-size: 1.8rem;
+}
+/* Launchpad: one clear primary action, then secondary destinations. */
+.template-launchpad .layout-hero {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+.template-launchpad .layout-hero > .layout-media {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 420px;
+}
+.template-launchpad .layout-hero > .layout-intro {
+  grid-column: 1;
+  grid-row: 1;
+}
+.template-launchpad .layout-headline {
+  font-size: clamp(2rem, 5cqi, 3.4rem);
+}
+.template-launchpad .layout-links {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+/* Directory: dark identity masthead, followed by grouped destinations. */
+.template-directory.designed-page {
+  padding: 0;
+}
+.template-directory > .layout-intro {
+  background: var(--deep);
+  color: #fff;
+  padding: 48px;
+}
+.template-directory .layout-content {
+  padding: 36px 48px 48px;
+}
+.template-directory .layout-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+.template-directory .layout-group + .layout-group {
+  margin: 0;
+}
+@container (max-width: 700px) {
+  .designed-page > .layout-intro,
+  .designed-page > .layout-content,
+  .designed-page > .layout-hero,
+  .designed-page > .layout-journal {
+    min-width: 0;
+  }
+  .layout-journal,
+  .layout-hero,
+  .template-launchpad .layout-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .template-launchpad .layout-hero > .layout-media {
+    grid-column: auto;
+    grid-row: 2;
+  }
+  .template-launchpad .layout-hero > .layout-intro {
+    grid-column: auto;
+    grid-row: 1;
+  }
+  .layout-hero > .layout-media,
+  .template-launchpad .layout-hero > .layout-media {
+    height: 240px;
+    min-height: 0;
+  }
+  .template-journal .layout-updates {
+    margin-top: 10px;
+  }
+  .template-postcard .layout-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .template-gallery .layout-media {
+    height: 220px;
+  }
+}
+@container (max-width: 480px) {
+  .layout-person {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .template-orbit .layout-person {
+    align-items: center;
+  }
+  .layout-links,
+  .template-canvas .layout-links,
+  .template-gallery .layout-links,
+  .template-launchpad .layout-links,
+  .template-directory .layout-groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .template-canvas .layout-link:first-child,
+  .template-canvas .layout-link:not(:first-child) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .layout-link-content {
+    padding: 18px;
+  }
+  .template-postcard .layout-hero {
+    padding: 18px;
+  }
+  .template-directory > .layout-intro {
+    padding: 28px 22px;
+  }
+  .template-directory .layout-content {
+    padding: 28px 22px;
+  }
+  .layout-contact {
+    padding: 22px;
+  }
+}
+/* Container queries cannot style their own container, so padding uses its width. */
+.designed-page:not(.template-directory) {
+  padding: clamp(20px, 5%, 48px);
+}
+/* Small, noninteractive layout diagrams in the design picker. */
+.mini-orbit i {
+  height: 0;
+}
+.mini-orbit b {
+  top: 7px;
+  left: 22px;
+}
+.mini-orbit em {
+  width: 40px;
+  height: 10px;
+  margin: 30px auto 0;
+  border-radius: 3px;
+}
+.mini-orbit em + em {
+  margin-top: 5px;
+}
+.mini-canvas i {
+  height: 10px;
+}
+.mini-canvas b {
+  top: 5px;
+  width: 10px;
+  height: 10px;
+}
+.mini-canvas em {
+  width: 27px;
+  height: 38px;
+  margin: 12px 4px 0;
+}
+.mini-canvas em + em {
+  width: 17px;
+  height: 38px;
+  position: absolute;
+  top: 22px;
+  right: 4px;
+  margin: 0;
+}
+.mini-gallery i {
+  height: 10px;
+}
+.mini-gallery b {
+  top: 5px;
+  width: 10px;
+  height: 10px;
+}
+.mini-gallery em {
+  width: 22px;
+  height: 30px;
+  margin: 21px 4px 0;
+}
+.mini-gallery em + em {
+  position: absolute;
+  right: 4px;
+  top: 31px;
+  margin: 0;
+}
+.mini-journal i {
+  width: 20px;
+  height: 100%;
+}
+.mini-journal b {
+  left: 4px;
+  top: 6px;
+}
+.mini-journal em {
+  width: 27px;
+  height: 22px;
+  margin: 0;
+  position: absolute;
+  right: 5px;
+  top: 8px;
+}
+.mini-journal em + em {
+  top: 36px;
+  margin: 0;
+}
+.mini-postcard i {
+  width: 22px;
+  height: 40px;
+  margin: 6px 4px;
+}
+.mini-postcard b {
+  left: 32px;
+  top: 8px;
+}
+.mini-postcard em {
+  position: absolute;
+  top: 30px;
+  left: 32px;
+  width: 20px;
+  height: 12px;
+  margin: 0;
+}
+.mini-postcard em + em {
+  top: 51px;
+  left: 5px;
+  width: 48px;
+}
+.mini-launchpad i {
+  position: absolute;
+  top: 7px;
+  right: 4px;
+  width: 23px;
+  height: 39px;
+}
+.mini-launchpad b {
+  left: 4px;
+  top: 7px;
+}
+.mini-launchpad em {
+  position: absolute;
+  top: 31px;
+  left: 4px;
+  width: 23px;
+  height: 13px;
+  margin: 0;
+}
+.mini-launchpad em + em {
+  top: 51px;
+  width: 49px;
+}
+.mini-directory i {
+  height: 31px;
+  background: #34476e;
+}
+.mini-directory b {
+  top: 7px;
+}
+.mini-directory em {
+  width: 22px;
+  height: 24px;
+  margin: 8px 4px;
+}
+.mini-directory em + em {
+  position: absolute;
+  top: 39px;
+  right: 4px;
+  margin: 0;
+}

@@ -1,3 +1,4 @@
+import { TEMPLATES } from "../../src/profile.js";
 import React from "react";
 import axe from "axe-core";
 import { readFileSync } from "node:fs";
@@ -146,7 +147,7 @@ describe("BioPage DOM interactions (not browser layout tests)", () => {
     await user.click(
       screen.getByRole("button", { name: "Design", exact: true }),
     );
-    for (const template of ["Editorial", "Spotlight", "Studio"]) {
+    for (const template of TEMPLATES.map((t) => t.name)) {
       await user.click(
         screen.getByRole("button", { name: new RegExp(`^${template}`) }),
       );

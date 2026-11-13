@@ -11,10 +11,21 @@ import {
   parseProfile,
 } from "../src/profile.js";
 
-test("ships three templates and four palettes", () => {
+test("ships ten templates and four palettes", () => {
   assert.deepEqual(
     TEMPLATES.map((t) => t.id),
-    ["studio", "editorial", "spotlight"],
+    [
+      "studio",
+      "editorial",
+      "spotlight",
+      "orbit",
+      "canvas",
+      "gallery",
+      "journal",
+      "postcard",
+      "launchpad",
+      "directory",
+    ],
   );
   assert.deepEqual(
     PALETTES.map((t) => t.id),
@@ -260,4 +271,73 @@ test("schema requires a visible name and mirrors URL safety checks", () => {
   assert.equal(image.test("images/photo.svg"), true);
   assert.equal(image.test("//example.com/photo.svg"), false);
   assert.equal(image.test("javascript:alert(1)"), false);
+});
+
+test("every layout and optional project image round-trips with schema parity", () => {
+  const schema = JSON.parse(
+    readFileSync(
+      new URL("../public/profile.schema.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  assert.deepEqual(
+    schema.properties.appearance.properties.template.enum,
+    TEMPLATES.map((t) => t.id),
+  );
+  for (const { id } of TEMPLATES) {
+    const profile = {
+      name: "Creator",
+      appearance: { template: id },
+      links: [
+        {
+          items: [
+            {
+              title: "Project",
+              url: "https://example.com",
+              image_url: "images/project.svg",
+              image_alt: "An illustrated field guide",
+            },
+          ],
+        },
+      ],
+    };
+    assert.deepEqual(validateProfile(profile), []);
+    const normalized = parseProfile(JSON.stringify(profile));
+    assert.equal(normalized.appearance.template, id);
+    assert.equal(normalized.links[0].items[0].image_url, "images/project.svg");
+    assert.equal(
+      normalized.links[0].items[0].image_alt,
+      "An illustrated field guide",
+    );
+    assert.deepEqual(normalizeProfile(normalized), normalized);
+  }
+});
+test("project images reject unsafe URLs, invalid types and oversized alt text", () => {
+  for (const image_url of [
+    "javascript:alert(1)",
+    "data:image/png;base64,x",
+    "//evil.test/image",
+    "https://user:password@example.com/image",
+    42,
+  ]) {
+    assert.ok(
+      validateProfile({
+        name: "Creator",
+        links: [{ items: [{ image_url }] }],
+      }).some((e) => e.includes("image_url")),
+    );
+  }
+  assert.ok(
+    validateProfile({
+      name: "Creator",
+      links: [{ items: [{ image_alt: "a".repeat(501) }] }],
+    }).some((e) => e.includes("image_alt")),
+  );
+  assert.deepEqual(
+    normalizeProfile({
+      name: "Creator",
+      links: [{ items: [{ title: "Legacy", url: "https://example.com" }] }],
+    }).links[0].items[0],
+    { title: "Legacy", url: "https://example.com", description: "" },
+  );
 });
